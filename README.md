@@ -1,6 +1,7 @@
 ##myos.android.sdk
 
 * Depends on:
+  * [Android SDK](http://developer.android.com/sdk/index.html)
   * [myos.android.libraries](https://github.com/amraboelela/myos.android.libraries)
   * [myos.android.frameworks](https://github.com/amraboelela/myos.android.frameworks)
 
