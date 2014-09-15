@@ -10,4 +10,4 @@
 
         export MYOS_PATH=~/develop/myos
 * For more info:
-[myos.ubuntu.sdk.wiki](https://github.com/amraboelela/myos.ubuntu.sdk/wiki)
+[myos.android.sdk.wiki](https://github.com/amraboelela/myos.android.sdk/wiki)
