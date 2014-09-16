@@ -14,10 +14,10 @@ fi
 
 echo "============================== Building ${FRAMEWORK_NAME} =============================="
 
-if [ ${PARAM} = "xclean" ] && [ ${CAN_CLEAN} = "YES" ]; then
-    echo "------------------------------ clean ------------------------------"
-    make clean
-fi
+#if [ ${PARAM} = "xclean" ] && [ ${CAN_CLEAN} = "YES" ]; then
+#    echo "------------------------------ clean ------------------------------"
+#    make clean
+#fi
 
 make || exit
 
