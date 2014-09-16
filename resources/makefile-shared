@@ -6,15 +6,13 @@ OUTPUT=lib$(LIB_NAME).so
 CC=$(STANDALONE_PATH)/bin/clang
 CXX=$(STANDALONE_PATH)/bin/clang++
 SYSROOT=$(STANDALONE_PATH)/sysroot
-CFLAGS+=-march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MY_FRAMEWORKS_PATH}/frameworks -I${MY_FRAMEWORKS_PATH}/libraries -I${MY_FRAMEWORKS_PATH}/resources/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
+CFLAGS+=-march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/android/frameworks -I${MYOS_PATH}/android/libraries -I${MYOS_PATH}/android/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
 LD=$(STANDALONE_PATH)/bin/clang++
 
-#LDFLAGS+=-v -Wl,--no-undefined -L${MY_FRAMEWORKS_PATH}/libs -lgcc -gcc-toolchain /Users/amr.aboelela/develop/adt/ndk/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64 -no-canonical-prefixes -target armv5te-none-linux-androideabi -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now
-
-LDFLAGS+=-v -L${MY_FRAMEWORKS_PATH}/libs -L${MY_FRAMEWORKS_PATH}/AsIsLibs -no-canonical-prefixes
+LDFLAGS+=-v -L${MYOS_PATH}/android/libraries/libs -L${MYOS_PATH}/android/frameworks/libs -no-canonical-prefixes
 LDLIBS+=-lgcc -lc -lm
 
-_SLIBS=$(patsubst %,${MY_FRAMEWORKS_PATH}/libs/lib%.a,$(SLIBS))
+_SLIBS=$(patsubst %,${MYOS_PATH}/android/libraries/libs/lib%.a,$(SLIBS))
 
 all: $(OUTPUT)
 ifeq ($(TARGET),NativeActivity)
@@ -28,7 +26,7 @@ OBJ=$(patsubst %,$(ODIR)/%,$(OBJECTS))
 $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(ODIR)/%.o: ${MY_FRAMEWORKS_PATH}/resources/include/%.c
+$(ODIR)/%.o: ${MYOS_PATH}/android/sdk/include/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(ODIR)/%.o: %.m
@@ -53,4 +51,4 @@ clean:
 	-rm $(OUTPUT)
 
 copy:
-	cp *.so ${MY_FRAMEWORKS_PATH}/libs
+	cp *.so ${MYOS_PATH}/android/frameworks/libs/

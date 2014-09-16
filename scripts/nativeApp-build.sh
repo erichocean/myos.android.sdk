@@ -5,16 +5,16 @@
 APPLICATION_PATH=$(pwd)
 if [ ${TARGET} = "All" ]; then
     export TARGET=myOSApplication
-    source ${MY_FRAMEWORKS_PATH}/resources/common-make.sh
+    source ${MYOS_PATH}/android/sdk/scripts/common-make.sh
     export TARGET=NativeActivity
-    source ${MY_FRAMEWORKS_PATH}/resources/common-make.sh
+    source ${MYOS_PATH}/android/sdk/scripts/common-make.sh
     TARGET=All
 else
-    cd ${MY_FRAMEWORKS_PATH}
-    ./install.sh
-    cd ${APPLICATION_PATH}
+    source ${MYOS_PATH}/android/sdk/scripts/build.sh
+#    ./install.sh
+    cd ${MYOS_PATH}/android/applications
     export TARGET=${TARGET}
-    source ${MY_FRAMEWORKS_PATH}/resources/common-make.sh
+    source ${MYOS_PATH}/android/sdk/scripts/common-make.sh
 fi
 
 

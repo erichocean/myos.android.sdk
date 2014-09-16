@@ -2,15 +2,13 @@
 # Copyright 2014 myOS Group. All rights reserved.
 #
 
-${MY_FRAMEWORKS_PATH}/resources/home.sh
+${MYOS_PATH}/android/sdk/scripts/home.sh
 
-cd ../libraries
-source ${MY_FRAMEWORKS_PATH}/libraries/install.sh
-cd ..
+cd ${MYOS_PATH}/android/libraries
+source build.sh
 
-cd frameworks
-source ${MY_FRAMEWORKS_PATH}/frameworks/install.sh
-cd ..
+cd ${MYOS_PATH}/android/frameworks
+source build.sh
 
 PARAM=x$1
 

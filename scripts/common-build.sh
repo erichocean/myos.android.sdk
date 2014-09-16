@@ -4,11 +4,11 @@
 
 if [ ${TARGET} = "All" ]; then
     export TARGET=myOSApplication
-    source ${MY_FRAMEWORKS_PATH}/resources/common-make.sh
+    source ${MYOS_PATH}/android/sdk/scripts/common-make.sh
     export TARGET=NativeActivity
-    source ${MY_FRAMEWORKS_PATH}/resources/common-make.sh
+    source ${MYOS_PATH}/android/sdk/scripts/common-make.sh
     TARGET=All
 else
     export TARGET=${TARGET}
-    source ${MY_FRAMEWORKS_PATH}/resources/common-make.sh
+    source ${MYOS_PATH}/android/sdk/scripts/common-make.sh
 fi

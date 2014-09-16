@@ -7,7 +7,7 @@ CC=$(STANDALONE_PATH)/bin/clang
 CXX=$(STANDALONE_PATH)/bin/clang++
 AR=$(STANDALONE_PATH)/bin/arm-linux-androideabi-ar
 SYSROOT=$(STANDALONE_PATH)/sysroot
-CFLAGS+= -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MY_FRAMEWORKS_PATH}/frameworks -I${MY_FRAMEWORKS_PATH}/libraries -I${MY_FRAMEWORKS_PATH}/resources/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
+CFLAGS+= -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/android/frameworks -I${MYOS_PATH}/android/libraries -I${MYOS_PATH}/android/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
 ARFLAGS=crs
 
 all: $(OUTPUT)
@@ -37,5 +37,5 @@ clean:
 	-rm $(OUTPUT)
 
 copy:
-	cp *.a ${MY_FRAMEWORKS_PATH}/libs
+	cp *.a ${MYOS_PATH}/android/libraries/libs/
     
