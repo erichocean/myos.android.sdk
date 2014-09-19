@@ -14,10 +14,10 @@ elif [ ${PARAM} = "xuninstall" ] ; then
     echo "===== uninstall ================================="
     ant uninstall
 #adb shell "cd /data/app-lib;rm -r com.mn.mn*"
-elif [ ${PARAM} = "xclean" ] ; then
-    echo "===== ndk-build clean ================================="
-    ndk-build clean
-    ant clean
+#elif [ ${PARAM} = "xclean" ] ; then
+#    echo "===== ndk-build clean ================================="
+#    ndk-build clean
+#    ant clean
 elif [ ${PARAM} = "xrestart" ] ; then
     echo "===== Restarting adb server ==========================="
     adb kill-server
