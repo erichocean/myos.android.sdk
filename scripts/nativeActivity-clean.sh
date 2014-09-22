@@ -3,5 +3,6 @@
 #
 
 echo "===== Native activity clean ================================="
+
 ndk-build clean
 ant clean

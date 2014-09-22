@@ -2,7 +2,7 @@
 # Copyright 2014 myOS Group. All rights reserved.
 #
 
-PARAM=x$1
+#PARAM=x$1
 
 CURRENT_DIRECTORY=$(pwd | awk -F'/' '{print $NF}')
 
@@ -13,11 +13,6 @@ else
 fi
 
 echo "============================== Building ${FRAMEWORK_NAME} =============================="
-
-#if [ ${PARAM} = "xclean" ] && [ ${CAN_CLEAN} = "YES" ]; then
-#    echo "------------------------------ clean ------------------------------"
-#    make clean
-#fi
 
 make || exit
 
