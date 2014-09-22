@@ -12,6 +12,9 @@ fi
 echo "============================ Native activity run ================================="
 
 #ndk-build || exit
-ant debug quit install
+adb shell input keyevent 3
+ant debug install
+
+#quit
 
 ant run
