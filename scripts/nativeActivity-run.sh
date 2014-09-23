@@ -11,10 +11,7 @@ fi
 
 echo "============================ Native activity run ================================="
 
-#ndk-build || exit
 adb shell input keyevent 3
+android update project -p . -s --target 1;
 ant debug install
-
-#quit
-
 ant run
