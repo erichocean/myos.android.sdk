@@ -11,7 +11,7 @@ if [ ${TARGET} = "All" ]; then
     TARGET=All
 else
     source ${MYOS_PATH}/android/sdk/scripts/build.sh
-cd ${APPLICATION_PATH}
+    cd ${APPLICATION_PATH}
     export TARGET=${TARGET}
     source ${MYOS_PATH}/android/sdk/scripts/common-make.sh
 fi
