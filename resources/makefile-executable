@@ -6,12 +6,13 @@ OUTPUT=$(APP_NAME)
 CC=$(STANDALONE_PATH)/bin/clang
 CXX=$(STANDALONE_PATH)/bin/clang++
 SYSROOT=$(STANDALONE_PATH)/sysroot
-CFLAGS+= -march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/android/frameworks -I${MYOS_PATH}/android/libraries -I${MYOS_PATH}/android/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
-
+CFLAGS+=-march=armv5te --sysroot $(SYSROOT) -I$(SYSROOT)/usr/include -I${MYOS_PATH}/android/frameworks -I${MYOS_PATH}/android/libraries -I${MYOS_PATH}/android/sdk/include -I$(ANDROID_SOURCE_PATH)/frameworks/base/include -I$(ANDROID_SOURCE_PATH)/system/core/include -I$(ANDROID_SOURCE_PATH)/hardware/libhardware/include
 LD=$(STANDALONE_PATH)/bin/clang++
 
-LDFLAGS+= -L${MYOS_PATH}/android/libraries/libs -L${MYOS_PATH}/android/frameworks/libs -no-canonical-prefixes -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now
-LDLIBS+= -lgcc -lc -lm
+LDFLAGS+=-v -L${MYOS_PATH}/android/libraries/libs -L${MYOS_PATH}/android/frameworks/libs -no-canonical-prefixes
+LDLIBS+=-lgcc -lc -lm
+
+#LDFLAGS+=-L${MYOS_PATH}/android/libraries/libs -L${MYOS_PATH}/android/frameworks/libs -no-canonical-prefixes -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now
 
 STRIP=$(STANDALONE_PATH)/bin/arm-linux-androideabi-strip
 
@@ -36,8 +37,11 @@ $(ODIR)/%.o: %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(OUTPUT): $(OBJ)
-	$(LD) -Wl,--gc-sections -Wl,-z,nocopyreloc --sysroot=$(SYSROOT) $^ $(LDFLAGS) $(LDLIBS) -o $@
+	$(LD) --sysroot=$(SYSROOT) $^ $(LDFLAGS) $(LDLIBS) -o $@
 	$(STRIP) --strip-unneeded $(OUTPUT)
+
+#-Wl,--gc-sections -Wl,-z,nocopyreloc
+#    $(LD) -shared --sysroot $(SYSROOT) $^ $(LDFLAGS) $(LDLIBS) -o $@
 
 clean:
 	-rm $(ODIR)/*.o

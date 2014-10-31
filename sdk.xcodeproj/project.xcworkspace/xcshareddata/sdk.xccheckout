@@ -14,7 +14,7 @@
 		<string>https://github.com/amraboelela/myos.android.sdk.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>sdk.xcodeproj/project.xcworkspace</string>
+	<string>sdk.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E3EE3877F97F8593E511B7161D011FAF49B369D0</key>
